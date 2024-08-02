@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
     
 
-    // Home Page - Slider
     if (document.querySelector('.slides')) {
         const slides = document.querySelector('.slides');
         const homeCourses = courses.slice(0, 5);
@@ -49,14 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         let currentIndex = 0;
-        const slideWidth = 160; // width of each slide
+        const slideWidth = 160; 
         const slideInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % homeCourses.length;
             slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
         }, 2000);
     }
 
-    // Courses Page - Search and List
     if (document.querySelector('#search')) {
         const searchInput = document.querySelector('#search');
         const courseList = document.querySelector('.course-list');
@@ -105,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         emailjs.sendForm('service_0bgfyuo', 'YOUR_TEMPLATE_ID', formData)
             .then(function(response) {
                 alert('Message sent successfully!');
-                form.reset(); // Clear the form fields
+                form.reset();
             }, function(error) {
                 alert('Failed to send message. Please try again.');
             });
