@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 28, title: "Scrum", description: "Learn Scrum for project management.", image: "https://via.placeholder.com/300x200?text=Scrum", details: "Master Scrum methodology for Agile project management.", price: "$70" },
         { id: 29, title: "SEO", description: "Get started with SEO.", image: "https://via.placeholder.com/300x200?text=SEO", details: "Learn search engine optimization techniques and practices.", price: "$60" },
         { id: 30, title: "Digital Marketing", description: "Learn the basics of Digital Marketing.", image: "https://via.placeholder.com/300x200?text=Digital+Marketing", details: "Understand digital marketing strategies and tools.", price: "$80" }
-    ];
+        ];
     
 
     // Home Page - Slider
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const courseDiv = document.createElement('div');
                 courseDiv.className = 'course';
                 courseDiv.innerHTML = `
-                    <a href="course-detail.html?id=${course.id}">
+                    <a href="course-detail.html?id=${course.id}" class="course-link">
                     <img src="${course.image}" alt="${course.title}" class="course-image">
                     <div style="text-align: center; display: flex; justify-content: space-between; padding-inline: 2em;">
                      <h3>${course.title}</h3>
