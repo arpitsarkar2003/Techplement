@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart - Techplement</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
 </head>
 <body>
     <header>
@@ -24,11 +24,36 @@
     
     <section id="cart">
         <h2>Your Cart</h2>
-        <div id="cart-items">
-            <!-- JavaScript -->
+        <div class="cart-container">
+            <div class="cart-items" id="cart-items">
+                <!-- JavaScript will populate this section -->
+            </div>
+            <div class="cart-summary">
+                <div class="summary-details">
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Discount</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Estimated Total</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                </div>
+                <button id="checkout">CHECKOUT</button>
+            </div>
         </div>
-        <button id="checkout">Checkout</button>
     </section>
+
+    <div id="purchase-modal" class="modal">
+        <div class="modal-content">
+            <img src="../Course_Selling/purchase.gif" alt="Purchase complete"/>
+            <h2>Purchase Complete!</h2>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 Techplement. All rights reserved.</p>
