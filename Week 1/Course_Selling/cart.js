@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderCart() {
         const cartItemsDiv = document.getElementById('cart-items');
-        cartItemsDiv.innerHTML = ''; // Clear existing items
+        cartItemsDiv.innerHTML = '';
 
         if (cart.length === 0) {
             cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
@@ -59,8 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'none';
             localStorage.removeItem('cart');
             location.replace(location.href);
-            cart.length = 0; // Clear the cart array
-            renderCart();
+            cart.length = 0;
             updateCartButton();
         }, 3000);
     }
@@ -78,15 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (checkoutButton) {
         checkoutButton.addEventListener('click', () => {
-            // Check if user is logged in
             const username = localStorage.getItem('username');
 
             if (username) {
-                // Proceed with checkout
                 showPurchaseCompleteModal();
-                // Add your checkout logic here
             } else {
-                // Redirect to sign-in page or show a message
                 alert('You must be signed in to proceed with checkout.');
                 window.location.href = 'sign-in.html';
             }
@@ -94,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     renderCart();
-    updateCartButton(); // Initialize cart button on page load
+    updateCartButton();
 });
 
 

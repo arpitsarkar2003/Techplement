@@ -329,8 +329,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
 
-    
-
     if (document.querySelector('.slides')) {
         const slides = document.querySelector('.slides');
         const homeCourses = courses.slice(0, 5);
@@ -401,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Call the updateCartCount function when the page loads
+   
     updateCartCount();
 
     emailjs.init("Y_rghtirDLYBWz0JC");
@@ -436,14 +434,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const username = localStorage.getItem('username');
 
     if (username) {
-        // Update UI to show the user is signed in
         const signInLink = document.querySelector('nav a[href="sign-in.html"]');
         if (signInLink) {
             signInLink.textContent = `Hello, ${username}`;
-            signInLink.href = ''; // Disable link or redirect to user profile page
+            signInLink.href = ''; 
         }
-
-        // Update cart button to reflect the number of items (if needed)
         updateCartButton();
     }
 });
@@ -451,13 +446,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function updateCartButton() {
     const cartButton = document.getElementById('cart-button');
     if (cartButton) {
-        const cartItemsCount = getCartItemsCount(); // Implement this function based on your cart logic
+        const cartItemsCount = getCartItemsCount(); 
         cartButton.textContent = `Cart (${cartItemsCount})`;
     }
 }
 
 function getCartItemsCount() {
-    // Retrieve the cart items count from localStorage or elsewhere
+    
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     return cartItems.length;
 }
@@ -466,17 +461,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('sign-in-form');
 
     form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent form from submitting normally
+        event.preventDefault(); 
 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        if (username && password) {
-            // Store user data in local storage
+        if (username && password) { 
             localStorage.setItem('username', username);
-            localStorage.setItem('password', password); // Note: Storing passwords in plain text is not secure!
-
-            // Redirect to home page or show a success message
+            localStorage.setItem('password', password);
             alert('Sign in successful!');
             window.location.href = 'index.html';
         } else {
@@ -487,8 +479,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const authButton = document.getElementById('auth-button');
-
-    // Check local storage for user status
     const isLoggedIn = localStorage.getItem('userLoggedIn');
 
     if (isLoggedIn) {
@@ -502,18 +492,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Function to handle sign-in
 function signIn() {
-    // Simulate sign-in logic
     localStorage.setItem('userLoggedIn', 'true');
-    // Reload the page to update the UI
     location.reload();
 }
 
-// Function to handle sign-out
 function signOut() {
-    // Remove user login status from local storage
     localStorage.removeItem('userLoggedIn');
-    // Reload the page to update the UI
     location.reload();
 }

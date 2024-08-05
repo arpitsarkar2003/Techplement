@@ -339,7 +339,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const courseInfo = document.querySelector('.course-info');
         const chaptersList = document.getElementById('chapters-list');
 
-        // Set course image and info
         courseImage.innerHTML = `<img src="${course.image}" alt="${course.title}">`;
         courseInfo.innerHTML = `
             <h2>${course.title}</h2>
@@ -349,7 +348,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="buttons"><button id="single-course-button" class="add-to-cart">Add to Cart</button></div>
         `;
 
-        // Add chapter buttons
         course.chapters.forEach((chapter, index) => {
             const button = document.createElement('button');
             button.textContent = `Chapter ${index + 1}: ${chapter.title}`;
@@ -357,7 +355,6 @@ document.addEventListener('DOMContentLoaded', function () {
             chaptersList.appendChild(button);
         });
 
-        // Handle chapter button clicks
         chaptersList.addEventListener('click', function (event) {
             if (event.target.tagName === 'BUTTON') {
                 const chapterIndex = event.target.getAttribute('data-index');
