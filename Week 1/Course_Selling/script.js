@@ -427,6 +427,20 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('close-sidebar').addEventListener('click', function() {
         document.getElementById('sidebar').classList.remove('open');
     });
+
+    function updateCartButton() {
+        const cartButton = document.getElementById('cart-button');
+        if (cartButton) {
+            const cartItemsCount = getCartItemsCount(); 
+            cartButton.textContent = `Cart (${cartItemsCount})`;
+        }
+    }
+    
+    function getCartItemsCount() {
+        
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        return cartItems.length;
+    }
 });
 
 
@@ -443,19 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function updateCartButton() {
-    const cartButton = document.getElementById('cart-button');
-    if (cartButton) {
-        const cartItemsCount = getCartItemsCount(); 
-        cartButton.textContent = `Cart (${cartItemsCount})`;
-    }
-}
 
-function getCartItemsCount() {
-    
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    return cartItems.length;
-}
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('sign-in-form');
