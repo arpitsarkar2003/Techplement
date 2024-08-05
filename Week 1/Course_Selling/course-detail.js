@@ -385,13 +385,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        function showPurchaseModal() {
-            const modal = document.getElementById('purchase-modal');
-            modal.style.display = 'block';
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 2000);
-        }
+        // function showPurchaseModal() {
+        //     const modal = document.getElementById('purchase-modal');
+        //     modal.style.display = 'block';
+        //     setTimeout(() => {
+        //         modal.style.display = 'none';
+        //     }, 2000);
+        // }
 
     } else {
         document.querySelector('.course-info').innerHTML = '<p>Course not found.</p>';

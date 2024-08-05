@@ -329,6 +329,8 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
 
+    
+
     if (document.querySelector('.slides')) {
         const slides = document.querySelector('.slides');
         const homeCourses = courses.slice(0, 5);
@@ -418,5 +420,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }, function (error) {
                 alert('Failed to send message. Please try again.');
             });
+    });
+
+    document.getElementById('menu-button').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.add('open');
+    });
+    
+    document.getElementById('close-sidebar').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('open');
     });
 });

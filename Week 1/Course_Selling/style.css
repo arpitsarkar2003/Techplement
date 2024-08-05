@@ -20,6 +20,7 @@ header a {
     text-decoration: none;
 }
 
+
 @media (max-width: 600px) {
     header {
         flex-direction: column;
@@ -111,6 +112,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    margin-top: 50px;
 }
 
 @media (max-width: 600px) {
