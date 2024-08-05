@@ -441,10 +441,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         return cartItems.length;
     }
-});
 
-
-document.addEventListener('DOMContentLoaded', () => {
     const username = localStorage.getItem('username');
 
     if (username) {
@@ -456,6 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartButton();
     }
 });
+
+
 
 
 
