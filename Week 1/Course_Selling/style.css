@@ -335,3 +335,57 @@ footer {
     width: 80%;
     text-align: center;
 }
+
+
+#sign-in {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+}
+
+#sign-in h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#sign-in-form input {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#sign-in-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75em 1.5em;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#sign-in-form button:hover {
+    background-color: #0056b3;
+}
+
+#auth-button {
+    color: #333;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+#auth-button.sign-out {
+    background-color: #007bff;
+    color: white;
+}

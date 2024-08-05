@@ -430,3 +430,90 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('sidebar').classList.remove('open');
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const username = localStorage.getItem('username');
+
+    if (username) {
+        // Update UI to show the user is signed in
+        const signInLink = document.querySelector('nav a[href="sign-in.html"]');
+        if (signInLink) {
+            signInLink.textContent = `Hello, ${username}`;
+            signInLink.href = ''; // Disable link or redirect to user profile page
+        }
+
+        // Update cart button to reflect the number of items (if needed)
+        updateCartButton();
+    }
+});
+
+function updateCartButton() {
+    const cartButton = document.getElementById('cart-button');
+    if (cartButton) {
+        const cartItemsCount = getCartItemsCount(); // Implement this function based on your cart logic
+        cartButton.textContent = `Cart (${cartItemsCount})`;
+    }
+}
+
+function getCartItemsCount() {
+    // Retrieve the cart items count from localStorage or elsewhere
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    return cartItems.length;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('sign-in-form');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username && password) {
+            // Store user data in local storage
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password); // Note: Storing passwords in plain text is not secure!
+
+            // Redirect to home page or show a success message
+            alert('Sign in successful!');
+            window.location.href = 'index.html';
+        } else {
+            alert('Please fill in both fields.');
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const authButton = document.getElementById('auth-button');
+
+    // Check local storage for user status
+    const isLoggedIn = localStorage.getItem('userLoggedIn');
+
+    if (isLoggedIn) {
+        authButton.textContent = 'Sign Out';
+        authButton.classList.add('sign-out');
+        authButton.addEventListener('click', signOut);
+    } else {
+        authButton.textContent = 'Sign In';
+        authButton.classList.remove('sign-out');
+        authButton.addEventListener('click', signIn);
+    }
+});
+
+// Function to handle sign-in
+function signIn() {
+    // Simulate sign-in logic
+    localStorage.setItem('userLoggedIn', 'true');
+    // Reload the page to update the UI
+    location.reload();
+}
+
+// Function to handle sign-out
+function signOut() {
+    // Remove user login status from local storage
+    localStorage.removeItem('userLoggedIn');
+    // Reload the page to update the UI
+    location.reload();
+}

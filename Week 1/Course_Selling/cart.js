@@ -74,6 +74,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    const checkoutButton = document.getElementById('checkout');
+
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', () => {
+            // Check if user is logged in
+            const username = localStorage.getItem('username');
+
+            if (username) {
+                // Proceed with checkout
+                showPurchaseCompleteModal();
+                // Add your checkout logic here
+            } else {
+                // Redirect to sign-in page or show a message
+                alert('You must be signed in to proceed with checkout.');
+                window.location.href = 'sign-in.html';
+            }
+        });
+    }
+
     renderCart();
     updateCartButton(); // Initialize cart button on page load
 });
