@@ -17,11 +17,14 @@
                 <li><a href="courses.html">Courses</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html">Cart</a></li>
+                <li><a href="cart.html" id="cart-button">Cart (0)</a></li>
             </ul>
         </nav>
     </header>
-    <a style="margin: 2rem; display: block;" href="courses.html">Back to Courses</a>
+
+     <a style="margin: 2rem; display: block; text-decoration: none;
+    color: #333; " href="courses.html"><span style="border: 1px solid #333; padding: 0.5rem; border-radius: 0.5rem;">< Back to Courses</span></a>
+
     <section id="course-details">
         <div class="sidebar">
             <h3>Chapters</h3>
@@ -39,10 +42,16 @@
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Techplement. All rights reserved.</p>
-    </footer>
+
+    <div id="purchase-modal" class="modal">
+        <div class="modal-content">
+            <img src="../Course_Selling/purchase.gif" alt="Add to Cart"/>
+            <h2>Add to Cart Success!</h2>
+        </div>
+    </div>
+
 
     <script src="course-detail.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

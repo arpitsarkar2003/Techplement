@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function saveCart(cart) {
         localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartButton();
+    }
+
+    function updateCartButton() {
+        const cartButton = document.getElementById('cart-button');
+        const itemCount = cart.length;
+        cartButton.textContent = `Cart (${itemCount})`;
     }
 
     function calculateTotal(cart) {
@@ -50,9 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'block';
         setTimeout(() => {
             modal.style.display = 'none';
-            localStorage.removeItem('cart'); 
+            localStorage.removeItem('cart');
             location.replace(location.href);
-            renderCart(); 
+            cart.length = 0; // Clear the cart array
+            renderCart();
+            updateCartButton();
         }, 3000);
     }
 
@@ -66,4 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     renderCart();
+    updateCartButton(); // Initialize cart button on page load
 });
+
+
+
+
+
+    
