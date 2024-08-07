@@ -338,15 +338,33 @@ document.addEventListener('DOMContentLoaded', function () {
         const courseImage = document.querySelector('.single-course-image');
         const courseInfo = document.querySelector('.course-info');
         const chaptersList = document.getElementById('chapters-list');
+        let currentChapterIndex = 0;
 
-        courseImage.innerHTML = `<img src="${course.image}" alt="${course.title}">`;
-        courseInfo.innerHTML = `
-            <h2>${course.title}</h2>
-            <p>${course.description}</p>
-            <div class="course-details">${course.details}</div>
-            <div class="course-price"><span id="single-course-price">Price: ${course.price}</span></div>
-            <div class="buttons"><button id="single-course-button" class="add-to-cart">Add to Cart</button></div>
-        `;
+        function updateCourseDetails(chapterIndex) {
+            const chapter = course.chapters[chapterIndex];
+            courseImage.innerHTML = `<img src="${chapter.image}" alt="${chapter.title}">`;
+            courseInfo.innerHTML = `
+                <h2>${chapter.title}</h2>
+                <div class="course-details">${chapter.content}</div>
+                <div class="buttons">
+                    <button id="next-chapter-button" class="next-chapter">Next Chapter</button>
+                </div>
+            `;
+            currentChapterIndex = chapterIndex;
+
+            const nextChapterButton = document.getElementById('next-chapter-button');
+            if (chapterIndex >= course.chapters.length - 1) {
+                nextChapterButton.disabled = true;
+                nextChapterButton.textContent = "End of Course";
+            } else {
+                nextChapterButton.disabled = false;
+            }
+            nextChapterButton.addEventListener('click', () => {
+                updateCourseDetails(chapterIndex + 1);
+            });
+        }
+
+        updateCourseDetails(currentChapterIndex);
 
         course.chapters.forEach((chapter, index) => {
             const button = document.createElement('button');
@@ -357,14 +375,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         chaptersList.addEventListener('click', function (event) {
             if (event.target.tagName === 'BUTTON') {
-                const chapterIndex = event.target.getAttribute('data-index');
-                const chapter = course.chapters[chapterIndex];
-                courseImage.innerHTML = `<img src="${chapter.image}" alt="${chapter.title}">`;
-                courseInfo.innerHTML = `
-                    <h2>${chapter.title}</h2>
-                    <div class="course-details">${chapter.content}</div>
-                    <div class="buttons"><button id="single-course-button" class="add-to-cart">Next Chapter</button></div>
-                `;
+                const chapterIndex = parseInt(event.target.getAttribute('data-index'));
+                updateCourseDetails(chapterIndex);
             }
         });
 
@@ -389,7 +401,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 modal.style.display = 'none';
             }, 2000);
         }
-
     } else {
         document.querySelector('.course-info').innerHTML = '<p>Course not found.</p>';
     }

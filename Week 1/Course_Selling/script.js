@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         let currentIndex = 0;
-        const slideWidth = 100;
+        const slideWidth = 150;
         const slideInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % homeCourses.length;
             slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
