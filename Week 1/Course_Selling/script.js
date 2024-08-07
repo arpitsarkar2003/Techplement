@@ -328,6 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     ];
 
+    // home sliders
 
     if (document.querySelector('.slides')) {
         const slides = document.querySelector('.slides');
@@ -352,6 +353,8 @@ document.addEventListener('DOMContentLoaded', function () {
             slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
         }, 2000);
     }
+
+    // course page
 
 
     if (document.querySelector('#search')) {
@@ -390,6 +393,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // cart update
+
     function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartCount = cart.length;
@@ -399,8 +404,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-   
     updateCartCount();
+
+    function updateCartButton() {
+        const cartButton = document.getElementById('cart-button');
+        if (cartButton) {
+            const cartItemsCount = getCartItemsCount();
+            cartButton.textContent = `Cart (${cartItemsCount})`;
+        }
+    }
+
+    function getCartItemsCount() {
+
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        return cartItems.length;
+    }
+
+    // emailjs
 
     emailjs.init("Y_rghtirDLYBWz0JC");
 
@@ -420,27 +440,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 
-    document.getElementById('menu-button').addEventListener('click', function() {
-        document.getElementById('sidebar').classList.add('open');
-    });
     
-    document.getElementById('close-sidebar').addEventListener('click', function() {
-        document.getElementById('sidebar').classList.remove('open');
-    });
 
-    function updateCartButton() {
-        const cartButton = document.getElementById('cart-button');
-        if (cartButton) {
-            const cartItemsCount = getCartItemsCount(); 
-            cartButton.textContent = `Cart (${cartItemsCount})`;
-        }
-    }
-    
-    function getCartItemsCount() {
-        
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        return cartItems.length;
-    }
 
     const username = localStorage.getItem('username');
 
@@ -448,7 +449,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const signInLink = document.querySelector('nav a[href="sign-in.html"]');
         if (signInLink) {
             signInLink.textContent = `Hello, ${username}`;
-            signInLink.href = ''; 
+            signInLink.href = '';
         }
         updateCartButton();
     }
@@ -456,18 +457,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+// authentication
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('sign-in-form');
 
     form.addEventListener('submit', (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        if (username && password) { 
+        if (username && password) {
             localStorage.setItem('username', username);
             localStorage.setItem('password', password);
             alert('Sign in successful!');
